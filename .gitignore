@@ -40,5 +40,3 @@ Thumbs.db
 # Ignore files created by running tests
 coverage/
 
-# Ignore specific files
-frontend

@@ -1,0 +1,93 @@
+@import url("https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Poppins:wght@500&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+.slick-prev,
+.slick-next {
+  display: none !important;
+}
+
+.bg-blue {
+  z-index: 0;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 50px;
+  height: 90px;
+  transform: rotate(-30.748deg);
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #02005a  0%, #02005a 100%);
+  filter: blur(66px);
+}
+
+.bg-pink {
+  z-index: 0;
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  width: 50px;
+  height: 90px;
+  transform: rotate(-30.748deg);
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #FF6969  0%, #FF6969 100%);
+  filter: blur(66px);
+}
+
+.bg-blue-2 {
+  z-index: 0;
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  width: 50px;
+  height: 90px;
+  transform: rotate(-30.748deg);
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #02005a  0%, #02005a 100%);
+  filter: blur(66px);
+}
+
+.bg-pink-2 {
+  z-index: 0;
+  position: absolute;
+  bottom: 0%;
+  left: 0%;
+  width: 50px;
+  height: 90px;
+  transform: rotate(-30.748deg);
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #FF6969  0%, #FF6969 100%);
+  filter: blur(66px);
+}
+
+.bg-blue-3 {
+  z-index: 0;
+  position: absolute;
+  bottom: 0%;
+  right: 0%;
+  width: 50px;
+  height: 90px;
+  transform: rotate(-30.748deg);
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #80C4E9  0%, #80C4E9 100%);
+  filter: blur(66px);
+}
+
+
+.bg-blue-4 {
+  z-index: 0;
+  position: absolute;
+  top: 0%;
+  left: 0%;
+  width: 50px;
+  height: 90px;
+  transform: rotate(-30.748deg);
+  flex-shrink: 0;
+  background: linear-gradient(90deg, #80C4E9  0%, #80C4E9 100%);
+  filter: blur(66px);
+}
