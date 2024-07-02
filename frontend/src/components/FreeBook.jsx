@@ -1,11 +1,16 @@
-import List from "../../public/List.json";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Slider from "react-slick";
 import Card from "./Card";
+import { useContext} from "react";
+import { SearchContext } from "../Context/SearchContext";
 
 function FreeBook() {
-  const freeData = List.filter((data) => data.category === "Free");
+ 
+  const {booksData}=useContext(SearchContext)
+ 
+
+  const freeData = booksData?.filter((data) => data.category === "Free");
   // console.log("books data:", freeData)
   var settings = {
     dots: true,

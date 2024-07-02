@@ -1,7 +1,13 @@
 import { Link } from "react-router-dom";
-import List from "../../public/List.json";
+// import List from "../../public/List.json";
 import Card from "./Card";
+import { useContext } from "react";
+import { SearchContext } from "../Context/SearchContext";
 function Course() {
+  const {booksData} = useContext(SearchContext);
+
+  console.log("context data:", booksData)
+
   return (
     <>
       <div className="max-w-screen-2xl container mx-auto md:px-20 px-4 dark:bg-slate-900 dark:text-white">
@@ -22,21 +28,20 @@ function Course() {
             your next favorite book today at BooksAdda, where the world of
             fiction awaits you.
           </p>
-         <Link to={"/"}>
-         <button
-            className="bg-pink-500 text-white px-4 py-2 rounded-md 
+          <Link to={"/"}>
+            <button
+              className="bg-pink-500 text-white px-4 py-2 rounded-md 
             border-2 border-pink-500
            hover:bg-white hover:text-pink-500 hover:border-2
             hover:border-pink-500 duration-300 transition-all mt-6"
-          >
-            Contact Us
-          </button>
-         </Link>
+            >
+              Contact Us
+            </button>
+          </Link>
         </div>
         <div className="mt-12 grid grid-cols-1 md:grid-cols-4">
-          {List.map((item) => (
-            <Card item={item} key={item?.id} />
-          ))}
+          {booksData.length > 0 &&
+            booksData?.map((item) => <Card item={item} key={item?.id} />)}
         </div>
       </div>
     </>

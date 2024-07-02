@@ -1,18 +1,75 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EyeSlash from "../assets/eye-slash";
 import PropTypes from "prop-types";
 import { useForm } from "react-hook-form";
+import axios from "axios";
+import toast from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 function FormComponents({ IsLogin }) {
   const [passwordType, setPasswordType] = useState("password");
   // console.log("current form:", IsLogin);
-
+  const navigate = useNavigate();
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => console.log(data);
+  const onSubmit = async (data) => {
+    console.log(data);
+    if (IsLogin) {
+      try {
+        const UserInfo = {
+          email: data.email,
+          password: data.password,
+        };
+        const res = await axios({
+          url: "http://localhost:5000/user/signin",
+          data: UserInfo,
+          method: "POST",
+        });
+        //  console.log(res.data.success);
+        if (res.data?.success) {
+          localStorage.setItem("User", JSON.stringify(res.data.user));
+          setTimeout(() => {
+            navigate("/");
+            window.location.reload();
+          }, 1000);
+          toast.success(res.data?.message);
+        }
+      } catch (err) {
+        toast.error(err?.response?.data?.message);
+      }
+    } else {
+      try {
+        const UserInfo = {
+          name: data.fullname,
+          email: data.email,
+          password: data.password,
+        };
+        const res = await axios({
+          url: "http://localhost:5000/user/signup",
+          data: UserInfo,
+          method: "POST",
+        });
+        // console.log(res.data);
+        if (res?.data?.success) {
+          localStorage.setItem("User", JSON.stringify(res.data.user));
+          setTimeout(() => {
+            navigate("/");
+            window.location.reload();
+          }, 1000);
+          toast.success(res.data?.message);
+        }
+      } catch (err) {
+        toast.error(err?.response?.data?.message);
+      }
+    }
+  };
+  useEffect(() => {
+    reset();
+  }, [IsLogin, reset]);
 
   const password = watch("password");
   return (

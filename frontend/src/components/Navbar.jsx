@@ -4,12 +4,17 @@ import DarkLogo from "/DarkLogo.png";
 import { useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ThemeContext } from "../Context/ThemeContext";
+import { SearchContext } from "../Context/SearchContext";
+import { useAuth } from "../Context/AuthContext";
+import toast from "react-hot-toast";
 
 function Navbar() {
-  const login = false;
+  const { user, setUser } = useAuth();
+  // console.log("user:", user?.);
+  const login = user;
   const { theme, setTheme } = useContext(ThemeContext);
   const [sticky, setSticky] = useState(false);
-
+  const { setSearch } = useContext(SearchContext);
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 0) {
@@ -46,6 +51,17 @@ function Navbar() {
       path: "/about",
     },
   ];
+
+  const handleChange = () => {
+    if (event.target.value !== "") {
+      setSearch(event.target.value);
+    }
+  };
+  const handleLogout =()=>{
+    setUser(null);
+    localStorage.removeItem("User");
+    toast.success("Logout Successfully");
+  }
   return (
     <>
       <div
@@ -119,6 +135,7 @@ function Navbar() {
                     sticky && "bg-base-200 duration-300"
                   }`}
                   placeholder="Search"
+                  onChange={handleChange}
                 />
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -164,11 +181,11 @@ function Navbar() {
             </label>
 
             {login ? (
-              <div className="dropdown dropdown-end">
+              <div className="dropdown dropdown-end dark:bg-slate-800 dark:text-white">
                 <div
                   tabIndex={0}
                   role="button"
-                  className="btn btn-ghost btn-circle avatar"
+                  className="btn btn-ghost btn-circle avatar dark:bg-slate-800 dark:text-white"
                 >
                   <div className="w-9 rounded-full">
                     <img
@@ -179,13 +196,13 @@ function Navbar() {
                 </div>
                 <ul
                   tabIndex={0}
-                  className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52"
+                  className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52 dark:bg-slate-800 dark:text-white"
                 >
                   <li>
                     <a className="justify-between">Profile</a>
                   </li>
                   <li>
-                    <a>Logout</a>
+                    <a onClick={handleLogout}>Logout</a>
                   </li>
                 </ul>
               </div>
