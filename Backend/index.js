@@ -18,7 +18,7 @@ main().catch((err) => console.log(err));
 async function main() {
   try {
     await mongoose.connect(uri);
-    console.log("Connected to MongoDB");
+    // console.log("Connected to MongoDB");
     //    // Seed the database
     // await Book.insertMany(books);
     // console.log("Books have been added successfully!");
@@ -37,6 +37,6 @@ app.get("/", (req, res) => {
   res.send("Hello World");
 });
 
-app.listen(() => {
+app.listen(5000,() => {
   console.log("Server started");
 });
