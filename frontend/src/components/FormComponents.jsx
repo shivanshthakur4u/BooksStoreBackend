@@ -25,7 +25,7 @@ function FormComponents({ IsLogin }) {
           password: data.password,
         };
         const res = await axios({
-          url: "http://localhost:5000/user/signin",
+          url: `${import.meta.env.BACKEND_URL}/user/signin`,
           data: UserInfo,
           method: "POST",
         });
@@ -49,7 +49,7 @@ function FormComponents({ IsLogin }) {
           password: data.password,
         };
         const res = await axios({
-          url: "http://localhost:5000/user/signup",
+          url: `${import.meta.env.BACKEND_URL}/user/signup`,
           data: UserInfo,
           method: "POST",
         });

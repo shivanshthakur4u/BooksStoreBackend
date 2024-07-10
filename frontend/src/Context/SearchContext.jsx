@@ -8,11 +8,13 @@ export const SearchProvider = ({ children }) => {
   const [search, setSearch] = useState("");
   const debouncedValue = useDebounce(search, 500);
   const [booksData, setData] = useState([]);
+ 
   useEffect(() => {
     const getBooks = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/book?q=${debouncedValue}`
+          `${import.meta.env.VITE_BACKEND_URL}/book?q=${debouncedValue}`
+        
         );
         setData(response?.data?.books);
       } catch (err) {
