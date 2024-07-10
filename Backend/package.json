@@ -8,16 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/shivanshthakur4u/Booksadda.git"
-  },
   "author": "saurabh",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/shivanshthakur4u/Booksadda/issues"
-  },
-  "homepage": "https://github.com/shivanshthakur4u/Booksadda#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",
