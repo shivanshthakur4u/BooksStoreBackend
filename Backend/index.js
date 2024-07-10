@@ -37,6 +37,6 @@ app.use("/user", userRoutes);
 //   res.send("Hello World");
 // });
 
-app.listen(port, () => {
-  console.log("Server is running on port " + port);
+app.listen(() => {
+  console.log("Server is running on port ");
 });
