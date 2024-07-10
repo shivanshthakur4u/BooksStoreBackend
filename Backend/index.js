@@ -10,7 +10,7 @@ const app = express();
 app.use(cors());
 app.use(express.json());
 const port = process.env.PORT;
-const uri = `mongodb+srv://boylikes2play:${process.env.UserPassword}@cluster0.prryekd.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0`;
+const uri = process.env.DB_URL;
 
 // DB connection
 main().catch((err) => console.log(err));
@@ -33,9 +33,9 @@ app.use("/book", bookRoutes);
 
 app.use("/user", userRoutes);
 
-app.get("/", (req, res) => {
-  res.send("Hello World");
-});
+// app.get("/", (req, res) => {
+//   res.send("Hello World");
+// });
 
 app.listen(port, () => {
   console.log("Server is running on port " + port);
